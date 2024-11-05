@@ -1,0 +1,38 @@
+<!-- template/controleDiscente/disciplina_list.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Disciplinas</title>
+</head>
+<body>
+    <h1>Lista de Disciplinas</h1>
+    <a href="{% url 'disciplina_create' %}">Adicionar Disciplina</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Carga Horária</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for disciplina in disciplinas %}
+            <tr>
+                <td>{{ disciplina.nome }}</td>
+                <td>{{ disciplina.carga_horaria }}</td>
+                <td>
+                    <a href="{% url 'disciplina_update' disciplina.id %}">Editar</a>
+                    <a href="{% url 'disciplina_delete' disciplina.id %}">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhuma disciplina cadastrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!-- template/controleDiscente/matricula_form.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if form.instance.pk %}Editar Matrícula{% else %}Adicionar Matrícula{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Editar Matrícula{% else %}Adicionar Matrícula{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'matricula_list' %}">Voltar à lista</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- template/controleDiscente/matricula_list.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Matrículas</title>
+</head>
+<body>
+    <h1>Lista de Matrículas</h1>
+    <a href="{% url 'matricula_create' %}">Adicionar Matrícula</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Disciplina</th>
+                <th>Estudante</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for matricula in matriculas %}
+            <tr>
+                <td>{{ matricula.disciplina.nome }}</td>
+                <td>{{ matricula.estudante }}</td>
+                <td>
+                    <a href="{% url 'matricula_update' matricula.id %}">Editar</a>
+                    <a href="{% url 'matricula_delete' matricula.id %}">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhuma matrícula cadastrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
